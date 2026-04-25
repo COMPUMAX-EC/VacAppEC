@@ -1,7 +1,7 @@
 # VacAppEC - Control Ganadero 🐄
 
 Bienvenidos al nuevo repositorio oficial de **VacAppEC**. 
-El código contenido aquí es una **Reescritura Total** de la arquitectura antigua en Ionic/NestJS hacia una nueva y moderna aplicación multiplataforma construida íntegramente con **Flutter**.
+ **Flutter**.
 
 ## 🚀 Tecnologías Principales
 
