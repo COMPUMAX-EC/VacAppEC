@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" color="success" [routerLink]="['/']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gráfico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="getData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="px-3">
+    <ion-select (ionChange)="changePeriod($event)" interface="popover" label="Período" placeholder="Seleccionar periodo" value="week">
+      <ion-select-option value="week">Semana</ion-select-option>
+      <ion-select-option value="month">Mes</ion-select-option>
+      <ion-select-option value="year">Año</ion-select-option>
+      <ion-select-option value="all">Historico</ion-select-option>
+    </ion-select>
+  </div>
+  <canvas
+    baseChart
+    class="chart"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [type]="lineChartType"
+></canvas>
+</ion-content>

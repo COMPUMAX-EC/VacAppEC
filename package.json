@@ -1,0 +1,23 @@
+{
+  "name": "tuganado",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently --kill-others \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FacuLL/tuganado.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FacuLL/tuganado/issues"
+  },
+  "homepage": "https://github.com/FacuLL/tuganado#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tu ganado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="h-full w-full flex flex-col items-center justify-center">
+    <div class="w-full px-2">
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Repetir contraseña</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
+      <ion-row class="mt-2">
+        <ion-col>
+          <div class="flex w-full">
+            <ion-button type="submit" color="primary" fill="outline" class="w-full" [routerLink]="['/login']">Iniciar Sesión</ion-button>
+            <ion-button type="submit" color="primary" class="w-full">Registrarse</ion-button>
+          </div>
+          <a [routerLink]="['/forgot-password']" class="small-text mt-1">¿Olvidaste tu contraseña?</a>
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
+</ion-content>
