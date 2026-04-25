@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="flex">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" color="success" [routerLink]="['/']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ordeñe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="h-full w-full flex flex-col pt-3" *ngIf="!selectedCow">
+    <h1 class="text-center text-3xl mb-3">Seleccionar vaca</h1>
+    <ion-list>
+      <ion-item *ngFor="let cow of cowList" button (click)="selectCow(cow.caravana)">
+        <ion-label>{{ cow.caravana }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <form class="h-full w-full flex flex-col items-center justify-center" *ngIf="selectedCow" [formGroup]="recordForm" (ngSubmit)="registerRecord()">
+    <div class="w-full px-2">
+      <ion-item lines="none">
+        <h1>Vaca seleccionada: <span class="text-green-500">{{ selectedCow }}</span></h1>
+        <ion-button (click)="clearSelectedCow()" class="ml-3" color="success">Cambiar vaca</ion-button>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-datetime-button datetime="datetime" class="mb-2"></ion-datetime-button>
+      </ion-item>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime color="success" id="datetime" formControlName="date" [showDefaultButtons]="true"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-item lines="full">
+        <ion-label position="floating">Turno</ion-label>
+        <ion-select formControlName="shift" placeholder="Selecciona turno">
+          <ion-select-option value="0">Mañana</ion-select-option>
+          <ion-select-option value="1">Tarde</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Litros</ion-label>
+        <ion-input id="amount" formControlName="amount" type="text" required></ion-input>
+      </ion-item>
+      <ion-row class="mt-2">
+        <ion-col>
+          <div class="flex w-full">
+            <ion-button type="submit" color="success" fill="outline" class="w-full">Cargar registro</ion-button>
+          </div>
+          <p class="{{success ? 'text-green-500' : 'text-red-500'}}">{{output}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
+</ion-content>
