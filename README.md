@@ -1,44 +1,58 @@
-# VacAppEC - Control Ganadero 🐄
+# VacAppEC · Control Ganadero 🐄
 
-Bienvenidos al nuevo repositorio oficial de **VacAppEC**. 
- **Flutter**.
+App móvil para que **ganaderos de Ecuador** lleven el control de su hato desde el celular: identifican a cada animal
+con un **código QR** en el arete o collar, registran su **historial de salud** y vacunas, y siguen su **peso**.
+Funciona **sin internet** en el establo y sincroniza con la nube cuando vuelve la conexión.
 
-## 🚀 Tecnologías Principales
+## Para qué sirve
 
-- **Flutter / Dart** - Framework móvil multiplataforma.
-- **Firebase Auth** - Inicio de sesión seguro exclusivo con cuenta de Google.
-- **Cloud Firestore** - Base de datos NoSQL con soporte Offline nativo (Si te quedas sin internet en el establo, la app sigue funcionando y sincronizará en la nube automáticamente cuando recuperes la conexión).
-- **Provider** - Gestión de estados.
-- **GoRouter** - Navegación entre pantallas.
+- **Registro e identificación QR:** crea el perfil de cada animal, genera su código QR para imprimir y escanéalo
+  con la cámara para abrir su ficha en el campo.
+- **Salud y veterinaria:** historial clínico, tratamientos, vacunas, enfermedades y próximas dosis por animal.
+- **Tablero principal:** resumen y menú central de la finca.
+- **Inicio de sesión con Google**, para que los datos de cada ganadero queden en su propia cuenta.
 
-## 📱 Módulos de la Aplicación
+En desarrollo: **reproducción y genética** y **alimentación y peso**.
 
-La arquitectura está hecha en base a carpetas (features), donde cada módulo es independiente:
+## Detalles técnicos
 
-1. **Dashboard (`/features/dashboard`)**: Tablero principal y menú central de navegación.
-2. **Registro e Identificación QR (`/features/animals`)**:
-   - Creación de perfiles ganaderos.
-   - Generación automática de Códigos QR para impresión en aretes o collares.
-   - Escáner con cámara para identificación rápida a campo abierto.
-3. **Salud y Veterinaria (`/features/health`)**:
-   - Control estricto de historial clínico.
-   - Agendamiento de tratamientos, vacunas, enfermedades y registro de dosis futuras por animal.
-4. **Reproducción y Genética** *(En desarrollo...)*.
-5. **Alimentación y Peso** *(En desarrollo...)*.
+| Capa | Tecnología |
+|---|---|
+| App | Flutter / Dart (Android e iOS) |
+| Autenticación | Firebase Auth con Google Sign-In |
+| Datos | Cloud Firestore, con soporte offline nativo |
+| Estado | Provider |
+| Navegación | GoRouter |
+| QR | `qr_flutter` (generar) y `mobile_scanner` (escanear) |
+| Gráficos | `fl_chart` |
 
-## 🛠 Instalación y Despliegue para Colaboradores
+Arquitectura por *features*, cada módulo independiente:
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/COMPUMAX-EC/VacAppEC.git
-   ```
-2. Instala las dependencias:
-   ```bash
-   flutter pub get
-   ```
-3. Ejecuta la aplicación en tu emulador o dispositivo físico:
-   ```bash
-   flutter run
-   ```
+```
+lib/core/              router y tema
+lib/features/auth/     inicio de sesión
+lib/features/dashboard/
+lib/features/animals/  modelo, provider, formulario, detalle y escáner QR
+lib/features/health/   registros de salud
+```
 
-*NOTA PARA DEVELOPERS: El proyecto usa Firebase. Asegúrate de tener los archivos `google-services.json` (Android) y el de configuración de iOS, o corre `flutterfire configure` si vas a hacer el deploy con tu propio proyecto de pruebas.*
+### Ejecutar localmente
+
+```bash
+git clone https://github.com/COMPUMAX-EC/VacAppEC.git
+cd VacAppEC
+flutter pub get
+flutter run
+```
+
+El proyecto usa Firebase. Para trabajar con tu propio proyecto de pruebas, ejecuta `flutterfire configure`; genera
+`google-services.json` (Android) y la configuración de iOS.
+
+## In English
+
+Flutter app for Ecuadorian cattle farmers: QR ear-tag identification, health and vaccination records, and weight
+tracking (in progress), with Google sign-in and offline-first Cloud Firestore sync.
+
+## Licencia
+
+[MIT](LICENSE).
